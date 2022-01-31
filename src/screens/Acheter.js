@@ -3,7 +3,7 @@ import "../styles/acheter.scss";
 import {useState,useEffect} from "react";
 import { useSelector,useDispatch} from "react-redux";
 import {useNavigate} from "react-router-dom";
-import {selectLivre,selectEtape,selectCode,selectTelephone, setCode} from "../features/counterSlice";
+import {selectLivre,selectEtape,selectCode,selectTelephone, setCode, setTelephone} from "../features/counterSlice";
 import Etape1 from "../components/Etape1";
 import {navigate} from "react-router-dom";
 import Etape2 from "../components/Etape2";
@@ -48,6 +48,8 @@ const Acheter=()=>{
     },[code,telephone])
 
     const annuler=()=>{
+        dispatch(setCode(""));
+        dispatch(setTelephone(""));
         navigate("/");
     }
 
