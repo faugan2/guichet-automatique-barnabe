@@ -1,0 +1,22 @@
+.livres{
+    background-color:whitesmoke;
+    min-height:100vh;
+    font-size: 0.8rem;
+    >.body{
+        padding:1rem;
+        >.line{
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            text-align:center;
+           
+
+        }
+
+        .mes_livres{
+            display:grid;
+            grid-template-columns: 1fr;
+            grid-gap:1rem;
+        }
+    }
+}

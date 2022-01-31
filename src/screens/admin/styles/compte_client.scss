@@ -1,0 +1,67 @@
+.compte_client{
+    >.top{
+      
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        border-bottom: 1px solid whitesmoke;
+        padding-bottom: 0.5rem;
+        >h2{
+            margin:0;
+            padding:0;
+            font-size: 1rem;
+            color:gray;
+        }
+
+        >h3{
+            margin:0;
+        }
+    }
+
+    .body{
+        margin-top: 1rem;
+
+        .line{
+            display:flex;
+            flex-direction:column;
+            margin-top: 1rem;
+            >label{
+                font-size:0.8rem;
+                font-weight: bold;
+            }
+
+            >div{
+                display:flex;
+                align-items:center;
+                border-bottom: 1px solid silver;
+                >input{
+                    flex:1;
+                    border:none;
+                    outline:none;
+                }
+            }
+
+            >button{
+                width: 100px;
+                margin:auto;
+                padding:0.5rem;
+                font-weight: bold;
+                cursor: pointer;
+            }
+
+            >button:hover{
+                opacity:0.6;
+            }
+
+            >p{
+                text-align: center;
+                font-size: 0.8rem;
+            }
+        }
+    }
+
+
+}
+
+

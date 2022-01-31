@@ -1,0 +1,18 @@
+.tabs{
+  background-color: white;
+  display:flex;
+  align-items:center;
+ 
+  >button{
+      flex:1;
+      font-size: 0.8rem;
+      border:none;
+      background-color: white;
+      cursor: pointer;
+  }
+
+  >button.active{
+      border-bottom:2px solid black;
+      font-weight: bold;
+  }
+}

@@ -1,0 +1,21 @@
+.admin{
+    background-color:whitesmoke;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    >div{
+        background-color:white;
+        width:400px;
+        height:100px;
+        padding:1rem;
+        border-radius: 5px;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        font-size:0.8rem;
+        font-weight: bold;
+
+    }
+}

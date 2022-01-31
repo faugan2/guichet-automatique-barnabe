@@ -1,0 +1,27 @@
+.recherche{
+    background-color:whitesmoke;
+    min-height:100vh;
+
+    >.line{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        flex-direction:column;
+        font-size: 0.8rem;
+        
+        padding:1rem;
+        >p{
+            margin:0;
+        }
+
+        >button{
+            margin-top:1rem;
+            padding:1rem;
+            background-color:white;
+            border:1px solid silver;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    }
+}

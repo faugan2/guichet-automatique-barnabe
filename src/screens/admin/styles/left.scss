@@ -1,0 +1,26 @@
+.left{
+    display:flex;
+    flex-direction:column;
+
+    >button{
+        padding:1rem;
+        border:none;
+        margin:0.5rem;
+        display:flex;
+        align-items:center;
+        background-color: white;
+        border-radius: 5px;
+        gap:0.3rem;
+        cursor: pointer;
+    }
+
+    >button:hover{
+        opacity:0.6;
+    }
+
+    >button.active{
+        color:indianred ;
+        font-weight: bold;
+        
+    }
+}

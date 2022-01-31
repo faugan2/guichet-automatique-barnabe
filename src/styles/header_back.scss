@@ -1,0 +1,21 @@
+.header_back{
+    display:flex;
+    gap:1rem;
+    align-items:center;
+    background-color: white;
+    height:60px;
+    >button{
+        padding:0.5rem;
+        border:none;
+        background-color: white;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        cursor: pointer;
+    }
+
+    >p{
+        font-size:0.9rem;
+        font-weight: bold;
+    }
+}

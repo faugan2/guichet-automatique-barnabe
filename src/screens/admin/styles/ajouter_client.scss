@@ -1,0 +1,62 @@
+.ajouter_client{
+    display:flex;
+    align-items:center;
+    flex-direction:column;
+    
+    
+    >h2{
+        font-size:1.2rem;
+    }
+
+    >.line{
+        display:flex;
+        width:100%;
+        flex-direction:column;
+        margin-bottom: 1rem;
+        >label{
+            font-size:0.8rem;
+            font-weight: bold;
+        }
+        >div{
+            display:flex;
+            align-items:center;
+            border-bottom: 1px solid silver;
+            flex:1;
+
+            >input{
+                flex:1;
+                border:none;
+                outline:none;
+
+            }
+
+            >select{
+                flex:1;
+                border:none;
+                outline:none;
+                background-color:white;
+            }
+
+            >textarea{
+                flex:1;
+                border:none;
+                outline:none;
+            }
+            
+        }
+
+        >button{
+            width:100px;
+            margin:auto;
+            padding:0.5rem;
+            border:1px solid silver;
+            border-radius: 5px;
+            background-color:whitesmoke;
+            cursor: pointer;
+        }
+
+        >button:hover{
+            opacity:0.6;
+        }
+    }
+}

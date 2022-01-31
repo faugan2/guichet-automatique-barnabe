@@ -1,0 +1,59 @@
+.mon_compte{
+    background-color:whitesmoke;
+    min-height: calc(100vh - 90px);
+    >.top{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        padding-top: 1rem;
+        border-bottom: 1px solid silver;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        padding-bottom: 0.5rem;
+        >p{
+            margin:0;
+        }
+
+        >.solde{
+            font-size:1.2rem;
+            font-weight: bold;
+        }
+
+        >.text_solde{
+            font-size: 0.8rem;
+            
+        }
+    }
+
+    .body{
+       
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        margin-top:2rem;
+
+        >div{
+            display:flex;
+            align-items:center;
+            flex-direction:column;
+            justify-content:center;
+            padding:1rem;
+
+            >h2{
+                font-size:1rem;
+            }
+
+            >button{
+                padding:1rem;
+                background-color: #fff;
+                border:1px solid silver;
+                border-radius: 5px;
+                cursor: pointer;
+                width:90%;
+                font-size: 0.8rem;
+                font-weight: bold;
+            }
+        }
+    }
+}

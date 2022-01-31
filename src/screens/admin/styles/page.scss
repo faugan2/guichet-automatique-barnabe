@@ -1,0 +1,16 @@
+.page{
+    background-color:whitesmoke;
+    min-height:100vh;
+    display:flex;
+
+    >.left{
+        width:200px;
+        padding:0.5rem;
+    }
+
+    >.right{
+        flex:1;
+        padding:0.5rem;
+        
+    }
+}
