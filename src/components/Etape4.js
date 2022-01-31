@@ -21,7 +21,19 @@ const Etape4=()=>{
         set_sending(true);
         set_alerte("Patientez...");
         const file=files[0];
-        const file_ref=storage.ref("image/"+file.name);
+        const reader=new FileReader();
+
+        reader.addEventListener("load",function(){
+            const url=reader.result;
+            dispatch(setVisage(url));
+            dispatch(setEtape(5));
+            set_alerte("");
+        })
+        reader.readAsDataURL(file);
+
+
+        
+       /* const file_ref=storage.ref("image/"+file.name);
 
         file_ref.put(file).then(()=>{
             file_ref.getDownloadURL().then((url)=>{
@@ -35,7 +47,7 @@ const Etape4=()=>{
         }).catch((err)=>{
            // ref2.current.disabled=false;
             set_alerte(err.message);
-        })
+        })*/
 
         
     }

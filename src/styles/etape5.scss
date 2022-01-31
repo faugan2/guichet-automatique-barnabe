@@ -7,22 +7,43 @@
     >.piece{
         height:250px;
         border:1px solid silver;
+        position: relative;
+        
         >img{
-            width:calc(100vw - 2rem);
+            width:300px;
             object-fit: cover;
             height:250px;
             margin:auto;
+        }
+
+        >canvas{
+            width:300px; 
+            height:250px;
+            position:absolute;
+            z-index: 1;
+            top:0;
+            left:0;
         }
     }
 
     >.visage{
         height:250px;
         border:1px solid silver;
+        position:relative;
         >img{
-            width:calc(100vw - 2rem);
+            width:300px;
             object-fit: cover;
             height:250px;
             margin:auto;
+        }
+
+        >canvas{
+            width:300px; 
+            height:250px;
+            position:absolute;
+            z-index: 1;
+            top:0;
+            left:0;
         }
     }
 

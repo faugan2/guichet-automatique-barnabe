@@ -22,21 +22,18 @@ const Etape3=()=>{
         set_sending(true);
         set_alerte("Patientez...");
         const file=files[0];
-        const file_ref=storage.ref("image/"+file.name);
 
-        file_ref.put(file).then(()=>{
-            file_ref.getDownloadURL().then((url)=>{
-                dispatch(setPiece(url));
-                dispatch(setEtape(4));
+        const reader=new FileReader();
 
-            }).catch((err)=>{
-                //ref2.current.disabled=false;
-                set_alerte(err.message);
-            })
-        }).catch((err)=>{
-            //ref2.current.disabled=false;
-            set_alerte(err.message);
+        reader.addEventListener("load",function(){
+            const url=reader.result;
+            dispatch(setPiece(url));
+            dispatch(setEtape(4));
+            set_alerte("");
         })
+        reader.readAsDataURL(file);
+
+        
 
         
     }
