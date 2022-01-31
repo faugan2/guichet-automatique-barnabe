@@ -3,6 +3,7 @@ import {useState,useEffect,useRef} from "react";
 import {storage} from "../connexion_base";
 import { useDispatch,useSelector } from "react-redux";
 import {setPiece,setEtape} from "../features/counterSlice";
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const Etape3=()=>{
     const joindre_piece=(e)=>{
@@ -17,7 +18,8 @@ const Etape3=()=>{
             return;
         }
 
-        ref2.current.disabled=true;
+        //ref2.current.disabled=true;
+        set_sending(true);
         set_alerte("Patientez...");
         const file=files[0];
         const file_ref=storage.ref("image/"+file.name);
@@ -28,11 +30,11 @@ const Etape3=()=>{
                 dispatch(setEtape(4));
 
             }).catch((err)=>{
-                ref2.current.disabled=false;
+                //ref2.current.disabled=false;
                 set_alerte(err.message);
             })
         }).catch((err)=>{
-            ref2.current.disabled=false;
+            //ref2.current.disabled=false;
             set_alerte(err.message);
         })
 
@@ -42,6 +44,7 @@ const Etape3=()=>{
     const ref=useRef(null);
     const ref2=useRef(null);
     const dispatch=useDispatch ();
+    const [sending,set_sending]=useState(false);
     return(
         <div className="etape3">
             <p>Veillez joindre une image d'une des pièces suivantes:</p>
@@ -56,7 +59,8 @@ const Etape3=()=>{
                 <p>NB: Votre visage doit être visible sur la pièce jointe</p>
             </div>
             <div>
-                <button onClick={joindre_piece} ref={ref2}>Joindre la pièce maintenant</button>
+                {sending==false && <button onClick={joindre_piece} ref={ref2}>Joindre la pièce maintenant</button>}
+               {sending==true && <CircularProgress  />} 
             </div>
 
             <div>

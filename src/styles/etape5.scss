@@ -5,22 +5,24 @@
     gap:1rem;
     
     >.piece{
-        height:200px;
+        height:250px;
         border:1px solid silver;
         >img{
-            width:100%;
+            width:calc(100vw - 2rem);
             object-fit: cover;
-            height:200px;
+            height:250px;
+            margin:auto;
         }
     }
 
     >.visage{
-        height:200px;
+        height:250px;
         border:1px solid silver;
         >img{
-            width:100%;
+            width:calc(100vw - 2rem);
             object-fit: cover;
-            height:200px;
+            height:250px;
+            margin:auto;
         }
     }
 

@@ -3,7 +3,7 @@ import {useState,useEffect,useRef} from "react";
 import {storage} from "../connexion_base";
 import { useDispatch,useSelector } from "react-redux";
 import {setPiece,setEtape,setVisage} from "../features/counterSlice";
-
+import CircularProgress from '@material-ui/core/CircularProgress';
 const Etape4=()=>{
     const joindre_piece=(e)=>{
         ref.current.click();
@@ -17,7 +17,8 @@ const Etape4=()=>{
             return;
         }
 
-        ref2.current.disabled=true;
+        //ref2.current.disabled=true;
+        set_sending(true);
         set_alerte("Patientez...");
         const file=files[0];
         const file_ref=storage.ref("image/"+file.name);
@@ -28,11 +29,11 @@ const Etape4=()=>{
                 dispatch(setEtape(5));
 
             }).catch((err)=>{
-                ref2.current.disabled=false;
+                //ref2.current.disabled=false;
                 set_alerte(err.message);
             })
         }).catch((err)=>{
-            ref2.current.disabled=false;
+           // ref2.current.disabled=false;
             set_alerte(err.message);
         })
 
@@ -41,6 +42,7 @@ const Etape4=()=>{
     const [alerte,set_alerte]=useState("");
     const ref=useRef(null);
     const ref2=useRef(null);
+    const [sending,set_sending]=useState(false);
     const dispatch=useDispatch ();
     return(
         <div className="etape3">
@@ -49,7 +51,8 @@ const Etape4=()=>{
 
             
             <div>
-                <button onClick={joindre_piece} ref={ref2}>Prendre la photo maintenant</button>
+                {sending==false && <button onClick={joindre_piece} ref={ref2}>Prendre la photo maintenant</button>}
+                {sending==true && <CircularProgress />}
             </div>
 
             <div>

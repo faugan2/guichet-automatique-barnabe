@@ -2,7 +2,7 @@ import HeaderBack from "../components/HeaderBack";
 import "../styles/livres.scss";
 import {useState,useEffect} from "react";
 import { useSelector,useDispatch} from "react-redux";
-import {selectLivres,selectMatiere, setLivres,setLivre} from "../features/counterSlice";
+import {selectLivres,selectMatiere, setLivres,setLivre, setEtape} from "../features/counterSlice";
 import Livre from "../components/Livre";
 import {useNavigate} from "react-router-dom"
 
@@ -32,6 +32,7 @@ const Livres=()=>{
 
     const go_to_livre_detail=(livre)=>{
         dispatch(setLivre(livre))
+        dispatch(setEtape(1));
         navigate("/livre-detail")
     }
 

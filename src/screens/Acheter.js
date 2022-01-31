@@ -10,6 +10,7 @@ import Etape2 from "../components/Etape2";
 import Etape3 from "../components/Etape3";
 import Etape4 from "../components/Etape4";
 import Etape5 from "../components/Etape5";
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const Acheter=()=>{
     const [etape,set_etape]=useState(1);
@@ -46,6 +47,10 @@ const Acheter=()=>{
 
     },[code,telephone])
 
+    const annuler=()=>{
+        navigate("/");
+    }
+
     const generate_code=()=>{
         if(code!=""){
             console.log("code deja existant",code);
@@ -78,10 +83,21 @@ const Acheter=()=>{
                     {etape==5 && <Etape5 />}
                 </div>
                 <div className="bottom">
-                    Etape {etape} sur 5 
-                    <label>
-                        {code}
-                    </label>
+                    {etape==5 && <button className="annuler" onClick={annuler}>Annuler</button>}
+                    <div>
+                        Etape {etape} sur 5 
+                        <label>
+                            {code}
+                        </label>
+                    </div>
+                    {etape==5 && <div className="detection">
+                        <CircularProgress  size={15} />
+                        <p>Dectection encours...</p>
+                    </div>}
+                    {etape==6 && <button>Valider</button>}
+                   
+
+
                 </div>
             </div>
         </div>

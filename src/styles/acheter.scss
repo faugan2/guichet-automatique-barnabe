@@ -16,16 +16,50 @@
             height:60px;
             display:flex;
             align-items:center;
-            justify-content:center;
-            flex-direction:column;
+            justify-content:space-around;
+            
             border-top-left-radius: 40px;
             border-top-right-radius: 40px;
             font-weight: bold;
-            >label{
-                font-size:0.6rem;
-                color:gray;
-                font-weight: normal;
+
+            >div{
+                display:flex;
+                flex-direction:column;
+                align-items:center;
+                >label{
+                    font-size:0.6rem;
+                    color:gray;
+                    font-weight: normal;
+                }
             }
+
+            >.detection{
+                font-size: 0.7rem;
+                >p{
+                    margin:0;
+                    font-weight: normal;
+                    
+                }
+            }
+
+            >.annuler{
+                padding:0.5rem;
+                border:none;
+                border-radius: 5px;
+
+            }
+
+            >.valider{
+                padding:0.5rem;
+                border:none;
+                border-radius: 5px;
+                background-color:green;
+                font-weight: bold;
+                color:white;
+            }
+
+            
+            
         }
     }
 }
