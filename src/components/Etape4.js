@@ -2,9 +2,9 @@ import "../styles/etape3.scss";
 import {useState,useEffect,useRef} from "react";
 import {storage} from "../connexion_base";
 import { useDispatch,useSelector } from "react-redux";
-import {setPiece,setEtape} from "../features/counterSlice";
+import {setPiece,setEtape,setVisage} from "../features/counterSlice";
 
-const Etape3=()=>{
+const Etape4=()=>{
     const joindre_piece=(e)=>{
         ref.current.click();
     }
@@ -24,8 +24,8 @@ const Etape3=()=>{
 
         file_ref.put(file).then(()=>{
             file_ref.getDownloadURL().then((url)=>{
-                dispatch(setPiece(url));
-                dispatch(setEtape(4));
+                dispatch(setVisage(url));
+                dispatch(setEtape(5));
 
             }).catch((err)=>{
                 ref2.current.disabled=false;
@@ -44,19 +44,12 @@ const Etape3=()=>{
     const dispatch=useDispatch ();
     return(
         <div className="etape3">
-            <p>Veillez joindre une image d'une des pièces suivantes:</p>
-            <ol>
-                <li>Carte d'identité</li>
-                <li>Passport</li>
-                <li>Permis de conduire</li>
-                <li>Carte d'électeur</li>
-            </ol>
+            <p>Veillez prendre une photo de votre visage avec la caméra de votre téléphone</p>
+            
 
+            
             <div>
-                <p>NB: Votre visage doit être visible sur la pièce jointe</p>
-            </div>
-            <div>
-                <button onClick={joindre_piece} ref={ref2}>Joindre la pièce maintenant</button>
+                <button onClick={joindre_piece} ref={ref2}>Prendre la photo maintenant</button>
             </div>
 
             <div>
@@ -69,4 +62,4 @@ const Etape3=()=>{
     );
 }
 
-export default Etape3;
+export default Etape4;

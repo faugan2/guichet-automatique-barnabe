@@ -8,6 +8,8 @@ import Etape1 from "../components/Etape1";
 import {navigate} from "react-router-dom";
 import Etape2 from "../components/Etape2";
 import Etape3 from "../components/Etape3";
+import Etape4 from "../components/Etape4";
+import Etape5 from "../components/Etape5";
 
 const Acheter=()=>{
     const [etape,set_etape]=useState(1);
@@ -72,9 +74,11 @@ const Acheter=()=>{
                     {etape==1 && <Etape1 generate_code={generate_code} />}
                     {etape==2 && <Etape2 generate_code={generate_code} />}
                     {etape==3 && <Etape3 />}
+                    {etape==4 && <Etape4 />}
+                    {etape==5 && <Etape5 />}
                 </div>
                 <div className="bottom">
-                    Etape {etape} sur 4 
+                    Etape {etape} sur 5 
                     <label>
                         {code}
                     </label>
