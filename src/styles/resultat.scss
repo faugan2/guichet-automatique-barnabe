@@ -1,0 +1,149 @@
+.resultat{
+    >.top{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        border-bottom: 1px solid silver;
+        padding-bottom: 0.5rem;
+        >p{
+            margin:0;
+            font-size: 0.8rem;
+        }
+
+        >p:first-child{
+            font-size: 1.5rem;
+            
+            border-radius: 50%;
+            width:3.5rem;
+            height:3.5rem;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+
+        >.red{
+            border:2px solid indianred;
+        }
+
+        >.green{
+            border:2px solid green;
+        }
+
+        
+    }
+
+    >.echec{
+        display:flex;
+        font-size:0.8rem;
+        align-items:center;
+        justify-content:center;
+        text-align: center;
+        flex-direction:column;
+
+        >p{
+            margin:0;
+        }
+        >p:first-child{
+            font-size:50px;
+            
+        }
+
+        >div{
+            display:flex;
+            flex-direction:column;
+            gap:0.5rem;
+            margin-top:1rem;
+
+            >label{
+                font-size:0.8rem;
+                font-weight: bold;
+                text-align: center;
+            }
+
+            >button{
+                padding:0.5rem;
+                width:100px;
+                font-weight: bold;
+                font-size: 0.8rem;
+            }
+
+            >button:first-child{
+                background-color:#4a73e8;
+                border:none;
+                color:white;
+                border-radius: 5px;
+            }
+
+            >button:last-child{
+                background-color:indianred;
+                border:none;
+                color:white;
+                border-radius: 5px;
+            }
+        }
+    }
+
+    >.success{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        font-size: 0.8rem;
+        >p{
+            margin:0;
+            text-align: center;
+        }
+
+        >p:first-child{
+            font-size:50px;
+        }
+        >p:nth-child(2){
+            font-weight: bold;
+            color:green;
+            font-size: 1.5rem;
+        }
+
+        >.line{
+            display:flex;
+            flex-direction:column;
+            margin-top: 1rem;
+            >label{
+                font-weight: bold;
+            }
+            >div{
+                display:flex;
+                align-items:center;
+                background-color: whitesmoke;
+                border-bottom: 1px solid black;
+                >input{
+                    flex:1;
+                    border:none;
+                    outline:none;
+                    background-color:whitesmoke;
+                    padding:0.5rem;
+                }
+            }
+
+            >button{
+                width:120px;
+                padding:0.5rem;
+            }
+
+            >button.submit{
+                background-color:#4a73e8;
+                border:none;
+                color:white;
+                font-weight: bold;
+                font-size: 0.8rem;
+            }
+
+            >button.cancel{
+                background-color:indianred;
+                border:none;
+                color:white;
+                font-weight: bold;
+                font-size: 0.8rem;
+            }
+        }
+    }
+}

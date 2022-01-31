@@ -56,7 +56,7 @@ const Acheter=()=>{
     }
 
     const generate_code=()=>{
-        if(code!=""){
+        if(code!=null){
             console.log("code deja existant",code);
             dispatch(setCode(""));
             setTimeout(()=>{
@@ -76,7 +76,10 @@ const Acheter=()=>{
     }
     const [open,set_open]=useState(false);
     useEffect(()=>{
-        if(result==null) return;
+        if(result==null){
+            set_open(false)
+            return;
+        } 
         set_open(true)
     },[result]);
 
