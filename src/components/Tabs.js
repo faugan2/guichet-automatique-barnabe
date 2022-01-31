@@ -23,8 +23,8 @@ const Tabs=()=>{
     return(
         <div className="tabs">
             <button className="active" onClick={set_tab.bind(this,0)}>Actions</button>
-            <button onClick={set_tab.bind(this,1)}>Porte feuille</button>
-            <button onClick={set_tab.bind(this,2)}>Historique</button>
+            <button onClick={set_tab.bind(this,1)}>Mes Livres</button>
+            <button onClick={set_tab.bind(this,2)}>Ma Galerie</button>
         </div>
     );
 }

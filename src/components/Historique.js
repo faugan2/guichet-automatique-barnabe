@@ -1,7 +1,7 @@
 import "../styles/historique.scss";
 import {useState,useEffect} from "react";
 import { useSelector,useDispatch} from "react-redux";
-import {selectMe,selectMouvements} from "../features/counterSlice";
+import {selectMe,selectMouvements,setTab} from "../features/counterSlice";
 import {useNavigate} from "react-router-dom";
 
 import Mouvement from "./Mouvement";
@@ -10,21 +10,22 @@ const Historique=()=>{
     const navigate=useNavigate ();
     const [data,set_data]=useState([]);
     const m=useSelector(selectMouvements);
+    const dispatch=useDispatch ();
 
     useEffect(()=>{
         set_data(m);
     },[m]);
 
     const go_to_retrait=()=>{
-        navigate("/retrait");
+        dispatch(setTab(0));
     }
     return (
         <div className="historique">
             {
                 data.length==0 && 
                 <div className="line">
-                    <p>Aucun mouvement n'est trouvé sur votre compte.</p>
-                    <p>Commencez une opération de retrait maintenant.</p>
+                    <p>Aucune photo ou pièce d'identité n'est trouvé dans votre galerie.</p>
+                    <p>Commencez une opération d'achat maintenant.</p>
 
                     <button onClick={go_to_retrait}>
                         Continuez avec un retrait
@@ -32,18 +33,7 @@ const Historique=()=>{
                 </div>
             }
 
-            {
-                data.length>0 && 
-                <div className="mouvements">
-                    {
-                        data.map((m,i)=>{
-                            return(
-                               <Mouvement key={m.key} mouvement={m}/>
-                            )
-                        })
-                    }
-                </div>
-            }
+            
         </div>
     );
 }

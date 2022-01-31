@@ -28,7 +28,7 @@ export default function SimpleMenu() {
   }
   return (
     <div>
-    <IconButton aria-label="display more actions" edge="end" color="inherit" onClick={handleClick}>
+    <IconButton aria-label="display more actions" edge="end" color="inherit" onClick2={handleClick}>
         <MoreIcon />
     </IconButton>
       
@@ -39,6 +39,7 @@ export default function SimpleMenu() {
         keepMounted
         open={Boolean(anchorEl)}
         onClose={handleClose}
+
       >
         <MenuItem onClick={go_to_profil}>Profile</MenuItem>
         <MenuItem onClick={logout}>Logout</MenuItem>

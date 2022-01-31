@@ -2,12 +2,13 @@ import "../styles/mon_compte.scss";
 import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import {useState,useEffect} from "react";
 import {useSelector,useDispatch} from "react-redux";
-import {selectMouvements} from "../features/counterSlice";
+import {selectMouvements,setTab} from "../features/counterSlice";
 import {useNavigate} from "react-router-dom";
 
 const MonCompte=()=>{
     const navigate=useNavigate ();
     const [solde,set_solde]=useState(0);
+    const dispatch=useDispatch ();
     
     const mouvements=useSelector(selectMouvements)
     useEffect(()=>{
@@ -21,25 +22,20 @@ const MonCompte=()=>{
     },[mouvements]);
 
     const go_to_retrait=()=>{
-        navigate("/retrait");
+        dispatch(setTab(0));
     }
     return (
         <div className="mon_compte">
-            <div className="top">
-                <MonetizationOnIcon style={{fontSize:"4rem"}} />
-                <p className="solde">{solde} CFA</p>
-                <p className="text_solde">Solde</p>
-            </div>
+             
+                <div className="line">
+                    <p>Vous n'avez acheté aucun livre.</p>
+                    <p>Commencez une opération d'achat de livre maintenant.</p>
 
-            <div className="body">
-                <div>
-                    <h2>Voulez-vous effectuer un retrait ?</h2>
                     <button onClick={go_to_retrait}>
-                        Faire un retrait maintenant
+                        Continuez avec un retrait
                     </button>
                 </div>
-               
-            </div>
+            
         </div>
     );
 }
