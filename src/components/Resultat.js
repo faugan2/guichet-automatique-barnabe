@@ -6,7 +6,7 @@ import {useNavigate} from "react-router-dom";
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import EmailIcon from '@material-ui/icons/Email';
 import {db} from "../connexion_base";
-
+import firebase from "firebase";
 const TAUX=70;
 const Resultat=()=>{
     const dispatch=useDispatch ();
@@ -68,6 +68,7 @@ const Resultat=()=>{
             livre,
             piece,
             visage,
+            date:firebase.firestore.FieldValue.serverTimestamp()
         }
 
         set_alerte("Patientez...");

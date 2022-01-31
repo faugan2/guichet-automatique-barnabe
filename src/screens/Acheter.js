@@ -13,6 +13,7 @@ import Etape5 from "../components/Etape5";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Modal from "../screens/admin/components/Modal";
 import Resultat from "../components/Resultat";
+
 const Acheter=()=>{
     const [etape,set_etape]=useState(1);
     const livre=useSelector (selectLivre);
@@ -56,15 +57,16 @@ const Acheter=()=>{
     }
 
     const generate_code=()=>{
-        if(code!=null){
+        /*if(code!=null || code!="" ){
             console.log("code deja existant",code);
             dispatch(setCode(""));
             setTimeout(()=>{
                 dispatch(setCode(code));
+                return;
             },100)
            
-            return;
-        }
+            
+        }*/
         console.log("genere un nouveau code");
         let new_code="";
         for(var i=0;i<6; i++){

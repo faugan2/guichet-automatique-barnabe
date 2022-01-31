@@ -22,7 +22,7 @@ const Livres=()=>{
 
     useEffect(()=>{
         
-        if(m==null || l.length==0){
+        if(m==null){
             window.location.href="/";
         };
 

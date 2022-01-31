@@ -30,7 +30,7 @@ const Clients=()=>{
     const [data_show,set_data_show]=useState([]);
     const [search,set_search]=useState("");
     useEffect(()=>{
-        db.collection("barnabe_users").onSnapshot((snap)=>{
+        db.collection("barnabe_achat").onSnapshot((snap)=>{
             const d=[];
             snap.docs.map((doc)=>{
                 const key=doc.id;
@@ -62,7 +62,7 @@ const Clients=()=>{
     },[search]);
 
     const delete_client=async (e,key)=>{
-        await db.collection("barnabe_users").doc(key).delete();
+        await db.collection("barnabe_achat").doc(key).delete();
     }
 
     const handle_open_edit=(client)=>{
@@ -94,10 +94,13 @@ const Clients=()=>{
                 <table width="100%" border={1}>
                     <thead>
                         <tr>
-                            <th width="10%">N°</th>
+                            <th width="5%">N°</th>
+                            <th width="10%">Date</th>
                             <th style={{textAlign:"left"}}>Nom</th>
                             <th style={{textAlign:"left"}}>Email</th>
                             <th width="15%" style={{textAlign:"left"}}>Téléphone</th>
+                            <th width="10%">Piece</th>
+                            <th width="10%">Visage</th>
                             <th width="15%">Actions</th>
                         </tr>
                     </thead>
@@ -108,22 +111,31 @@ const Clients=()=>{
                                 const nom=client.nom;
                                 const email=client.email;
                                 const telephone=client.telephone;
-                                const num=client.date?.seconds;
+                                let date=new Date(client.date?.seconds*1000).toUTCString();
+                                date=date.split(" ");
+                                date=date[1]+" "+date[2]+" "+date[3];
                                 return(
                                     <tr key={client.key}>
-                                        <td align="center">{num}</td>
+
+                                        <td align="center">{i+1}</td>
+                                        <td align="center">{date}</td>
                                         <td>{nom}</td>
                                         <td>{email}</td>
                                         <td>{telephone}</td>
+                                        <td>
+                                            <button>
+                                                <img src={client.piece} style={{width:"60px",height:"60px"}} />
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button>
+                                                <img src={client.visage} style={{width:"60px",height:"60px"}} />
+                                            </button>
+                                        </td>
                                         <td align="center">
                                             <div className="actions_btn">
-                                                {/*<button onClick={handle_open_edit.bind(this,client)}>
-                                                    <EditIcon style={{color:"blue",fontSize:"1.2rem"}} />
-                                                </button>
-                                                <button onClick={handle_open_compte.bind(this,client)}>
-                                                    <AttachMoneyIcon style={{color:"green",fontSize:"1.2rem"}} />
-                                                </button>*/}
-                                                <button onClick={e=>delete_client(e,client.key)}>
+                                               
+                                                <button onClick={e=>delete_client(e,client.key)} style={{width:"15px"}}>
                                                     <DeleteIcon style={{color:"indianred",fontSize:"1.2rem"}}/>
                                                 </button>
                                             </div>
