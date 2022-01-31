@@ -21,7 +21,10 @@ const Livres=()=>{
     },[m]);
 
     useEffect(()=>{
-        if(m==null || l.length==0) return;
+        
+        if(m==null || l.length==0){
+            window.location.href="/";
+        };
 
         const res=l.filter((item)=>{
             return item.matiere==m.id;
