@@ -1,0 +1,36 @@
+.etape3{
+    padding:1rem;
+    font-size: 0.8rem;
+    >p{
+        font-weight: bold;
+        text-align: center;
+    }
+
+    >ol{
+        >li{
+            padding:0.3rem;
+            font-style: italic;
+        }
+    }
+    >div{
+        margin-bottom: 1rem;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        >p{
+            margin:0;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        >button{
+            padding:0.5rem;
+            background-color:#4a73e8;
+            color:white;
+            border:none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    }
+    
+}
