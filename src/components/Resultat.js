@@ -1,9 +1,12 @@
 import "../styles/resultat.scss";
 import {useState,useEffect} from "react";
 import {useSelector,useDispatch} from "react-redux";
-import {selectResultatDection,setResultatDetection,setEtape,setPiece,setVisage,setCode} from "../features/counterSlice";
+import {selectResultatDection,setResultatDetection,setEtape,setPiece,setVisage,setCode, selectLivre, selectPiece, selectVisage, selectTelephone} from "../features/counterSlice";
 import {useNavigate} from "react-router-dom";
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
+import EmailIcon from '@material-ui/icons/Email';
+import {db} from "../connexion_base";
+
 const TAUX=70;
 const Resultat=()=>{
     const dispatch=useDispatch ();
@@ -11,6 +14,10 @@ const Resultat=()=>{
     const [result,set_result]=useState(null);
     const r=useSelector(selectResultatDection);
     const [cl,set_cl]=useState("red");
+    const livre=useSelector (selectLivre);
+    const piece=useSelector(selectPiece);
+    const visage=useSelector(selectVisage);
+    const telephone=useSelector (selectTelephone);
 
     useEffect(()=>{
         if(r==null) return;
@@ -40,8 +47,58 @@ const Resultat=()=>{
     }
 
     const valider=async (e)=>{
-        alert("going to validate")
+        set_alerte("");
+        if(nom== ""){
+            set_alerte("Le nom est vide");
+            return;
+        }
+
+        if(email==""){
+            set_alerte("L'email est vide");
+            return;
+        }
+
+        const btn=e.target;
+
+        const achat={
+            nom,
+            email,
+            telephone,
+            result,
+            livre,
+            piece,
+            visage,
+        }
+
+        set_alerte("Patientez...");
+        btn.disabled=true;
+        db.collection("barnabe_achat").add(achat).then(()=>{
+            btn.disabled=false;
+            set_alerte("Achat bien effectué");
+            setTimeout(()=>{
+                set_alerte("");
+                quitter();
+            },2000) 
+        }).catch((err)=>{
+            set_alerte(err.message);
+            btn.disabled=false;
+            setTimeout(()=>{
+                set_alerte("");
+            },5000) 
+
+        })
+
+       
+
+
     }
+
+    const [nom,set_nom]=useState("");
+    const [email,set_email]=useState("");
+    const [alerte,set_alerte]=useState("");
+
+
+
     return(
         <div className="resultat">
            <div className="top">
@@ -72,7 +129,9 @@ const Resultat=()=>{
                    <div className="line">
                         <label>Votre nom</label>
                         <div>
-                            <input type="text" />
+                            <input type="text"
+                             value={nom} onChange={e=>set_nom(e.target.value)}
+                            />
                             <AccountBoxIcon style={{color:"gray",fontSize:"1.2rem"}}/>
                         </div>
                     </div>
@@ -80,17 +139,23 @@ const Resultat=()=>{
                     <div className="line">
                         <label>Votre email</label>
                         <div>
-                            <input type="email" />
-                            <AccountBoxIcon style={{color:"gray",fontSize:"1.2rem"}}/>
+                            <input type="email"
+                            value={email} onChange={e=>set_email(e.target.value)}
+                            />
+                            <EmailIcon style={{color:"gray",fontSize:"1.2rem"}}/>
                         </div>
                     </div>
 
                     <div className="line">
                         <button className="submit" onClick={valider}>Validez l'achat</button>
                     </div>
-                    <p>Ou</p>
+                    <div className="ou">Ou</div>
                     <div className="line">
                         <button className="cancel" onClick={quitter}>Annuler</button>
+                    </div>
+
+                    <div className="line">
+                        {alerte}
                     </div>
                </div>
            }

@@ -65,7 +65,7 @@ export default function ProminentAppBar() {
             Material-UI
           </Typography>
 
-          <IconButton aria-label="search" color="inherit" onClick={go_to_search}>
+          <IconButton aria-label="search" color="inherit" onClick2={go_to_search}>
             <SearchIcon />
           </IconButton>
 
