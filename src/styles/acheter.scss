@@ -58,6 +58,20 @@
                 color:white;
             }
 
+            >.result{
+                display:flex;
+                font-weight: normal;
+                font-size: 0.8rem;
+                >p{
+                    margin:0;
+                }
+
+                >p:first-child{
+                    font-weight: bold;
+                }
+
+            }
+
             
             
         }

@@ -2,7 +2,7 @@ import CallIcon from '@material-ui/icons/Call';
 import "../styles/etape1.scss";
 import {useState,useEffect} from "react";
 import { useSelector,useDispatch} from "react-redux";
-import {setEtape,setTelephone} from "../features/counterSlice";
+import {setEtape,setResultatDetection,setTelephone} from "../features/counterSlice";
 
 import {setCode,selectCode} from "../features/counterSlice";
 
@@ -35,6 +35,7 @@ const Etape1=({generate_code})=>{
 
     useEffect(()=>{
         generate_code();
+        dispatch(setResultatDetection(null))
     },[]);
 
    

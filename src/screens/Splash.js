@@ -3,13 +3,16 @@ import {auth, db} from "../connexion_base";
 import {useState,useEffect} from "react";
 import logo from "../components/img/logo.jpg";
 import {useNavigate} from "react-router-dom";
-import {useDispatch} from "react-redux";
-import {setMe,setLoading,setMouvements, setLivres} from "../features/counterSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {setMe,setLoading,setMouvements, setLivres,setLoadingModels,selectLoadingModels, selectLoading} from "../features/counterSlice";
 import Footer from "../components/Footer";
+import * as faceapi from 'face-api.js';
 
 const Splash=()=>{
     const navigate=useNavigate ();
     const dispatch=useDispatch ();
+    const loading_models=useSelector(selectLoadingModels)
+    const loading=useSelector(selectLoading);
     useEffect(()=>{
 
         (async ()=>{
@@ -17,17 +20,29 @@ const Splash=()=>{
             await load_livres();
             dispatch(setLoading(false));
         })();
-        navigate("/home");
+
+
+        const loadModels=()=>{
+            dispatch(setLoadingModels(true))
+            Promise.all([
+                faceapi.nets.tinyFaceDetector.loadFromUri("/models"),
+                faceapi.nets.faceLandmark68Net.loadFromUri("/models"),
+                faceapi.nets.faceRecognitionNet.loadFromUri("/models"),
+                faceapi.nets.faceExpressionNet.loadFromUri("/models"),
+            ]).then(()=>{
+               console.log("models are loaded");
+               //navigate("/home");
+               dispatch(setLoadingModels(false))
+            }).catch((err)=>{
+                console.log("error loading modules");
+                //navigate("/");
+            })
+        }
+
+        loadModels();
         
-        /*auth.onAuthStateChanged(async (user)=>{
-            if(user==null){
-                navigate("/login");
-            }else{
-                await load_user_info();
-                await load_user_mouvements();
-                
-            }
-        })*/
+        
+      
     },[auth]);
 
     const load_user_info=async ()=>{
@@ -78,6 +93,13 @@ const Splash=()=>{
         })
     }
 
+
+    useEffect(()=>{
+        console.log(loading,loading_models);
+        if(loading_models==false){
+            navigate("/home");
+        }
+    },[loading_models])
     return(
         <div className="splash">
                 <div>

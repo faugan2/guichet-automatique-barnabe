@@ -31,9 +31,9 @@ const Actions=()=>{
 
             <div className="body">
                 <div className="line">
-                    {matieres.map((m)=>{
+                    {matieres.map((m,i)=>{
                         return(
-                            <button onClick={go_to_matiere.bind(this,m)}>
+                            <button onClick={go_to_matiere.bind(this,m)} key={i}>
                             {<img src={m.image} />}
                             {m.nom}
                             <div>

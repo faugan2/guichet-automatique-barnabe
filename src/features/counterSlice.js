@@ -17,6 +17,8 @@ const initialState = {
  telephone:"",
  piece:null,
  visage:null,
+ loadingModels:true,
+ resultatDetection:null,
 };
 
 export const counterSlice = createSlice({
@@ -70,6 +72,12 @@ export const counterSlice = createSlice({
     },
     setVisage:(state, action)=>{
       state.visage= action.payload;
+    },
+    setLoadingModels:(state, action)=>{
+      state.loadingModels= action.payload;
+    },
+    setResultatDetection:(state, action)=>{
+      state.resultatDetection= action.payload;
     }
   },
  
@@ -92,6 +100,8 @@ export const {
   setTelephone,
   setPiece,
   setVisage,
+  setLoadingModels,
+  setResultatDetection
 } = counterSlice.actions;
 
 
@@ -110,5 +120,7 @@ export const selectCode= (state) => state.counter.code;
 export const selectTelephone= (state) => state.counter.telephone;
 export const selectPiece= (state) => state.counter.piece;
 export const selectVisage= (state) => state.counter.visage;
+export const selectLoadingModels= (state) => state.counter.loadingModels
+export const selectResultatDection=(state)=> state.counter.resultatDetection;
 
 export default counterSlice.reducer;

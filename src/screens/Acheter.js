@@ -3,7 +3,7 @@ import "../styles/acheter.scss";
 import {useState,useEffect} from "react";
 import { useSelector,useDispatch} from "react-redux";
 import {useNavigate} from "react-router-dom";
-import {selectLivre,selectEtape,selectCode,selectTelephone, setCode, setTelephone} from "../features/counterSlice";
+import {selectLivre,selectEtape,selectCode,selectTelephone, setCode, setTelephone, selectResultatDection} from "../features/counterSlice";
 import Etape1 from "../components/Etape1";
 import {navigate} from "react-router-dom";
 import Etape2 from "../components/Etape2";
@@ -11,7 +11,8 @@ import Etape3 from "../components/Etape3";
 import Etape4 from "../components/Etape4";
 import Etape5 from "../components/Etape5";
 import CircularProgress from '@material-ui/core/CircularProgress';
-
+import Modal from "../screens/admin/components/Modal";
+import Resultat from "../components/Resultat";
 const Acheter=()=>{
     const [etape,set_etape]=useState(1);
     const livre=useSelector (selectLivre);
@@ -20,6 +21,7 @@ const Acheter=()=>{
     const code=useSelector(selectCode);
     const telephone=useSelector(selectTelephone);
     const dispatch=useDispatch ();
+    const result=useSelector(selectResultatDection)
 
     useEffect(()=>{
         set_etape(e);
@@ -72,7 +74,15 @@ const Acheter=()=>{
         dispatch(setCode(new_code));
         //return new_code
     }
-    console.log("nous somme a letape ",etape," de lachat de",livre)
+    const [open,set_open]=useState(false);
+    useEffect(()=>{
+        if(result==null) return;
+        set_open(true)
+    },[result]);
+
+    const close_modal=()=>{
+        //set_open(false);
+    }
     return(
         <div className="acheter">
             <HeaderBack title="Identification" />
@@ -92,16 +102,26 @@ const Acheter=()=>{
                             {code}
                         </label>
                     </div>
-                    {etape==5 && <div className="detection">
+                    {(etape==5 && result==null) && <div className="detection">
                         <CircularProgress  size={15} />
                         <p>Dectection encours...</p>
                     </div>}
-                    {etape==6 && <button>Valider</button>}
+                    {result!=null && <div className="result">
+                            <p>Resemblance</p>
+                            <p>{result.toFixed(2)*100} %</p>
+                        </div>}
                    
 
 
                 </div>
             </div>
+
+            {open==true && <Modal 
+                content={<Resultat />}
+                open={true}
+                click={close_modal}
+                width={200}
+            />}
         </div>
     );
 }
