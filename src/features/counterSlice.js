@@ -12,6 +12,9 @@ const initialState = {
  livre:null,
  livres:[],
  matiere:null,
+ etape:1,
+ code:"",
+ telephone:""
 };
 
 export const counterSlice = createSlice({
@@ -50,6 +53,15 @@ export const counterSlice = createSlice({
 
     setMatiere:(state, action)=>{
       state.matiere= action.payload;
+    },
+    setEtape:(state, action)=>{
+      state.etape= action.payload;
+    },
+    setCode:(state, action)=>{
+      state.code= action.payload;
+    },
+    setTelephone:(state, action)=>{
+      state.telephone= action.payload;
     }
   },
  
@@ -67,6 +79,9 @@ export const {
   setLivre,
   setLivres,
   setMatiere,
+  setEtape,
+  setCode,
+  setTelephone,
 } = counterSlice.actions;
 
 
@@ -80,5 +95,8 @@ export const selectSearch= (state) => state.counter.search;
 export const selectLivre= (state) => state.counter.livre;
 export const selectLivres= (state) => state.counter.livres;
 export const selectMatiere= (state) => state.counter.matiere
+export const selectEtape= (state) => state.counter.etape;
+export const selectCode= (state) => state.counter.code;
+export const selectTelephone= (state) => state.counter.telephone;
 
 export default counterSlice.reducer;

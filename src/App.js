@@ -17,7 +17,7 @@ import Profile from "./screens/Profile";
 import Recherche from "./screens/Recherche";
 import Livres from "./screens/Livres";
 import LivreDetail from "./screens/LivreDetail";
-
+import Acheter from "./screens/Acheter";
 
 function App() {
   return (
@@ -35,6 +35,7 @@ function App() {
         <Route path="/recherche" element={<Recherche />} />
         <Route path="/livres" element={<Livres />} />
         <Route path="/livre-detail" element={<LivreDetail />} />
+        <Route path="/acheter" element={<Acheter />} />
       </Routes>
     </BrowserRouter>
      

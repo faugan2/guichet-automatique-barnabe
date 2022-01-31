@@ -14,6 +14,7 @@ const AjouterClient=()=>{
     const [titre,set_titre]=useState("");
     const [file,set_file]=useState(null);
     const [description,set_description]=useState("");
+    const [prix,set_prix]=useState("");
     
     const create_user=async(e)=>{
         set_alerte("");
@@ -23,6 +24,10 @@ const AjouterClient=()=>{
         }
         if(titre== ""){
             set_alerte("Vous devez saisir un titre");
+            return;
+        }
+        if(prix== ""){
+            set_alerte("Vous devez saisir un prix");
             return;
         }
         if(file== null){
@@ -42,7 +47,7 @@ const AjouterClient=()=>{
         const ref=storage.ref("images/"+filename);
         ref.put(file).then(()=>{
             ref.getDownloadURL().then((url)=>{
-                const livre={matiere,titre,image:url,description,date:firebase.firestore.FieldValue.serverTimestamp()};
+                const livre={prix,matiere,titre,image:url,description,date:firebase.firestore.FieldValue.serverTimestamp()};
                 db.collection("barnabe_livres").add(livre).then(()=>{
                     set_alerte("Livre bien ajouté");
                     btn.disabled=false;
@@ -50,6 +55,7 @@ const AjouterClient=()=>{
                     set_matiere("0");
                     set_titre("");
                     set_file(null);
+                    set_prix("");
                     set_description("");
                 }).catch((err)=>{
                     set_alerte(err.message);
@@ -99,6 +105,14 @@ const AjouterClient=()=>{
                 <div>
                     <AccountBoxIcon style={{color:"gray",fontSize:"1.2rem"}}/>
                     <input type="text" value={titre} onChange={e=>set_titre(e.target.value)}/>
+                </div>
+            </div>
+
+            <div className="line">
+                <label>Prix du livre</label>
+                <div>
+                    <AccountBoxIcon style={{color:"gray",fontSize:"1.2rem"}}/>
+                    <input type="number" value={prix} onChange={e=>set_prix(e.target.value)}/>
                 </div>
             </div>
 

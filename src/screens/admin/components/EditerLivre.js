@@ -17,6 +17,7 @@ const AjouterClient=()=>{
     const [file,set_file]=useState(null);
     const [description,set_description]=useState("");
     const [img,set_img]=useState(null);
+    const [prix,set_prix]=useState("");
 
     const livre=useSelector(selectLivre)
 
@@ -26,6 +27,7 @@ const AjouterClient=()=>{
         set_titre(livre.titre);
         set_description(livre.description);
         set_img(livre.image);
+        set_prix(livre.prix);
         
     },[livre]);
     
@@ -37,6 +39,11 @@ const AjouterClient=()=>{
         }
         if(titre== ""){
             set_alerte("Vous devez saisir un titre");
+            return;
+        }
+
+        if(prix== ""){
+            set_alerte("Vous devez saisir un prix");
             return;
         }
         
@@ -54,7 +61,7 @@ const AjouterClient=()=>{
             const ref=storage.ref("images/"+filename);
             ref.put(file).then(()=>{
                 ref.getDownloadURL().then((url)=>{
-                    const obj={matiere,titre,image:url,description};
+                    const obj={prix,matiere,titre,image:url,description};
                     db.collection("barnabe_livres").doc(livre.key)
                     .update(obj,{merge:true}).then(()=>{
                         set_alerte("Livre bien modifié");
@@ -77,7 +84,7 @@ const AjouterClient=()=>{
                 btn.innerHTML="Modifier";
             })
         }else{
-            const obj={matiere,titre,description};
+            const obj={prix,matiere,titre,description};
             db.collection("barnabe_livres").doc(livre.key).update(obj,{merge:true}).then(()=>{
                 set_alerte("Livre bien modifié");
                 btn.disabled=false;
@@ -124,6 +131,14 @@ const AjouterClient=()=>{
                 <div>
                     <AccountBoxIcon style={{color:"gray",fontSize:"1.2rem"}}/>
                     <input type="text" value={titre} onChange={e=>set_titre(e.target.value)}/>
+                </div>
+            </div>
+
+            <div className="line">
+                <label>Prix du livre</label>
+                <div>
+                    <AccountBoxIcon style={{color:"gray",fontSize:"1.2rem"}}/>
+                    <input type="text" value={prix} onChange={e=>set_prix(e.target.value)}/>
                 </div>
             </div>
 

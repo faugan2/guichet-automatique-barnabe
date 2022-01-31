@@ -1,0 +1,55 @@
+.etape2{
+    padding:1rem;
+    >p{
+        text-align: center;
+        margin:0;
+
+        >label{
+            font-size:0.8rem;
+            font-weight: bold;
+        }
+
+        >button{
+            color:#4a73e8;
+            background-color:whitesmoke;
+            border:none;
+            cursor: pointer;
+        }
+    }
+
+    >.line{
+        display:flex;
+        margin-top: 1rem;
+        justify-content:center;
+        align-items:center;
+        >div{
+            display:flex;
+            align-items:center;
+            border-bottom: 1px solid silver;
+            background-color: white;
+            >input{ 
+                width:150px;
+                padding:0.5rem;
+                border:none;
+                outline:none;
+                letter-spacing: 10px;
+                text-align: center;
+            }
+        }
+    }
+
+    >button{
+        background-color:whitesmoke;
+        border:none;
+        padding:0.5rem;
+        align-self: center;
+        margin:auto;
+        margin-top: 1rem;
+        width:100%;
+        cursor: pointer;
+
+        >label>span{
+            color:#4a73e8;
+        }
+    }
+}

@@ -101,6 +101,7 @@ const Clients=()=>{
 
                             <th style={{textAlign:"left"}} width="10%">Matière</th>
                             <th style={{textAlign:"left"}} width="15%" >Titre</th>
+                            <th width="10%" >Prix</th>
                             <th width="15%">Image</th>
                             <th style={{textAlign:"left"}}>Description</th>
                             
@@ -124,7 +125,7 @@ const Clients=()=>{
                                         <td align="center">{i+1}</td>
                                         <td>{matiere}</td>
                                         <td>{titre}</td>
-                                        
+                                        <td>{livre.prix}</td>
                                         <td align="center">
                                             <img src={image} style={{width:25,height:25,resize:"contain"}}/>
                                         </td>

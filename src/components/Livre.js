@@ -14,7 +14,7 @@ const Livre=({livre,click,show_all})=>{
             <div className="zone1">
                 <img src={livre.image} />
                 <div>
-                    {Math.round(Math.random()*2000)} CFA
+                    {livre.prix} CFA
                 </div>
             </div>
             

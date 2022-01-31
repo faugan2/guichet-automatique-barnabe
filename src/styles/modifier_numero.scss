@@ -1,0 +1,37 @@
+.modifier_numero{
+    font-size:0.8rem;
+    >.line{
+        display:flex;
+        margin-top: 1rem;
+        flex-direction:column;
+        >label{
+            font-weight: bold;
+        }
+
+        >div{
+            display:flex;
+            align-items:center;
+            background-color:whitesmoke;
+            >input{
+                flex:1;
+                border:none;
+                outline:none;
+                background-color:whitesmoke;
+                padding:0.5rem;
+            }
+        }
+
+        >button{
+            width:100px;
+            margin:auto;
+            padding:0.5rem;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        >p{
+            margin:0;
+            text-align: center;
+        }
+    }
+}
